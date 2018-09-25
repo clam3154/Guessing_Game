@@ -10,7 +10,7 @@ public class CLamLib {
 
     public static void main(String[] augs)
     {
-        guesses
+        guesses = 0;
         System.out.println("Enter your name.");
         input = new Scanner(System.in);
         name = input.nextLine();
@@ -18,7 +18,6 @@ public class CLamLib {
         System.out.println("1: You guess the AI's number.");
         System.out.println("2: The AI guess your number");
         gameSelect();
-
     }
 
     public static void gameSelect()
@@ -89,6 +88,6 @@ public class CLamLib {
 
     public static void aiGuess()
     {
-
+        
     }
 }

@@ -5,15 +5,11 @@ import java.util.Scanner;
 public class CLamLib {
     private static Scanner input;
     private static int num;
-    private static String name;
     private static int guesses;
 
     public static void main(String[] augs)
     {
         guesses = 0;
-        System.out.println("Enter your name.");
-        input = new Scanner(System.in);
-        name = input.nextLine();
         System.out.println("Select your gamemode.");
         System.out.println("1: You guess the AI's number.");
         System.out.println("2: The AI guess your number");
@@ -41,7 +37,11 @@ public class CLamLib {
 
     public static void game1()
     {
-        System.out.println("Choose your difficulty. 1, 2, 3, or 4.");
+        System.out.println("Choose your difficulty.");
+        System.out.println("1: 1-10");
+        System.out.println("2: 1-100");
+        System.out.println("3: 1-1000");
+        System.out.println("4: 1-10000");
         theLevel();
     }
 
@@ -59,35 +59,77 @@ public class CLamLib {
 
     public static void theLevel()
     {
-
         input = new Scanner(System.in);
         int level = input.nextInt();
         if(level == 1)
         {
             num = (int) (Math.random() * (10) + 1);
+            System.out.println("1-10");
         }
         if(level == 2)
         {
             num = (int) (Math.random() * (100) + 1);
+            System.out.println("1-100");
         }
         if(level == 3)
         {
             num = (int) (Math.random() * (1000) + 1);
+            System.out.println("1-1000");
         }
         if(level == 4)
         {
             num = (int) (Math.random() * (10000) + 1);
+            System.out.println("1-10000");
         }
         if(level > 4)
         {
             System.out.println("Re-input the number.");
             theLevel();
         }
+        System.out.println("Start");
+        startGame1();
+    }
 
+    public static void startGame1()
+    {
+        input = new Scanner(System.in);
+        int guess = input.nextInt();
+        guesses++;
+        while(guess != num)
+        {
+            if (guess < num)
+            {
+                System.out.println("Your guess is less than the number.");
+            }
+            if (guess > num)
+            {
+                System.out.println("Your guess is greater than the number.");
+            }
+            System.out.println("Try again");
+        }
+        System.out.println("You guessed it right");
+        System.out.println("You guessed " + guesses + " times.");
     }
 
     public static void aiGuess()
     {
-        
+
+        guesses++;
+
+        while(guess != num)
+        {
+            if (guess < num)
+            {
+                System.out.println("Your guess is less than the number.");
+            }
+            if (guess > num)
+            {
+                System.out.println("Your guess is greater than the number.");
+            }
+            System.out.println("Try again");
+        }
+              
+
+        System.out.println("The AI guessed " + guesses + " times.");
     }
 }

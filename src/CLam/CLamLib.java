@@ -6,6 +6,7 @@ public class CLamLib {
     private static Scanner input;
     private static int num;
     private static int guesses;
+    private static int guess;
 
     public static void main(String[] augs)
     {
@@ -86,24 +87,23 @@ public class CLamLib {
             System.out.println("Re-input the number.");
             theLevel();
         }
-        System.out.println("Start");
         startGame1();
     }
 
     public static void startGame1()
     {
-        input = new Scanner(System.in);
-        int guess = input.nextInt();
-        guesses++;
         while(guess != num)
         {
+        input = new Scanner(System.in);
+        guess = input.nextInt();
+        guesses++;
             if (guess < num)
             {
-                System.out.println("Your guess is less than the number.");
+                System.out.println("Too Low.");
             }
             if (guess > num)
             {
-                System.out.println("Your guess is greater than the number.");
+                System.out.println("Too High.");
             }
             System.out.println("Try again");
         }
@@ -113,23 +113,24 @@ public class CLamLib {
 
     public static void aiGuess()
     {
-
-        guesses++;
-
+        int max = 100;
+        int min = 0;
+        int range = max - min;
+        guess = range;
         while(guess != num)
         {
+            guesses++;
             if (guess < num)
             {
-                System.out.println("Your guess is less than the number.");
+                System.out.println("Too Low.");
+                guess += range;
             }
             if (guess > num)
             {
-                System.out.println("Your guess is greater than the number.");
+                System.out.println("Too High.");
+                guess -= range;
             }
-            System.out.println("Try again");
         }
-              
-
         System.out.println("The AI guessed " + guesses + " times.");
     }
 }

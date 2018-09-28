@@ -13,7 +13,7 @@ public class CLamLib {
         guesses = 0;
         System.out.println("Select your gamemode.");
         System.out.println("1: You guess the AI's number.");
-        System.out.println("2: The AI guess your number");
+        System.out.println("2: The AI guess your number.");
         gameSelect();
     }
 
@@ -100,15 +100,16 @@ public class CLamLib {
             if (guess < num)
             {
                 System.out.println("Too Low.");
+                System.out.println("Try again.");
             }
             if (guess > num)
             {
                 System.out.println("Too High.");
+                System.out.println("Try again.");
             }
-            System.out.println("Try again");
         }
-        System.out.println("You guessed it right");
-        System.out.println("You guessed " + guesses + " times.");
+        System.out.println("You guessed it right.");
+        System.out.println("You took " + (guesses-1) + " guesses.");
     }
 
     public static void aiGuess()
@@ -116,21 +117,28 @@ public class CLamLib {
         int max = 100;
         int min = 0;
         int range = max - min;
-        guess = range;
+        guess = range/2;
         while(guess != num)
         {
             guesses++;
             if (guess < num)
             {
+                min = guess;
+                range = max - min;
+                System.out.println("The AI guessed " + guess + ".");
                 System.out.println("Too Low.");
-                guess += range;
+                guess = guess + (range/2);
             }
             if (guess > num)
             {
+                max = guess;
+                range = max - min;
+                System.out.println("The AI guessed " + guess + ".");
                 System.out.println("Too High.");
-                guess -= range;
+                guess = guess - (range/2);
             }
         }
-        System.out.println("The AI guessed " + guesses + " times.");
+        System.out.println("The AI guessed " + guess + ".");
+        System.out.println("The AI took " + guesses + " guesses.");
     }
 }

@@ -1,5 +1,6 @@
 package CLam;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CLamLib {
@@ -11,28 +12,30 @@ public class CLamLib {
     public static void main(String[] augs)
     {
         guesses = 0;
-        System.out.println("Select your gamemode.");
-        System.out.println("1: You guess the AI's number.");
-        System.out.println("2: The AI guess your number.");
-        gameSelect();
-    }
-
-    public static void gameSelect()
-    {
-        input = new Scanner(System.in);
-        int game = input.nextInt();
-        if(game == 1)
+        int game = 0;
+        while(game !=1 || game !=2)
         {
-            game1();
-        }
-        if(game == 2)
-        {
-            game2();
-        }
-        if(game > 2)
-        {
-            System.out.println("Re-input the number.");
-            gameSelect();
+            System.out.println("Select your gamemode.");
+            System.out.println("1: You guess the AI's number.");
+            System.out.println("2: The AI guess your number.");
+            try
+            {
+                input = new Scanner(System.in);
+                game = input.nextInt();
+            }
+            catch (InputMismatchException e)
+            {
+                System.out.println("That was not a number.");
+                input.next();
+            }
+            if (game == 1)
+            {
+                game1();
+            }
+            if (game == 2)
+            {
+                game2();
+            }
         }
     }
 

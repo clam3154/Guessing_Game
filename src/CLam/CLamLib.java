@@ -72,36 +72,32 @@ public class CLamLib {
 
     public static void theLevel()
     {
-        while(level ) {
-            input = new Scanner(System.in);
-            level = input.nextInt();
-            try {
-                input = new Scanner(System.in);
-                num = input.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("That was not a number.");
-                input.next();
-            }
-            if (level == 1) {
-                num = (int) (Math.random() * (10) + 1);
-                System.out.println("1-10");
-            }
-            if (level == 2) {
-                num = (int) (Math.random() * (100) + 1);
-                System.out.println("1-100");
-            }
-            if (level == 3) {
-                num = (int) (Math.random() * (1000) + 1);
-                System.out.println("1-1000");
-            }
-            if (level == 4) {
-                num = (int) (Math.random() * (10000) + 1);
-                System.out.println("1-10000");
-            }
-            if (level > 4) {
-                System.out.println("Re-input the number.");
-                theLevel();
-            }
+        input = new Scanner(System.in);
+        int level = input.nextInt();
+        if (level == 1)
+        {
+            num = (int) (Math.random() * (10) + 1);
+            System.out.println("1-10");
+        }
+        if (level == 2)
+        {
+            num = (int) (Math.random() * (100) + 1);
+            System.out.println("1-100");
+        }
+        if (level == 3)
+        {
+            num = (int) (Math.random() * (1000) + 1);
+            System.out.println("1-1000");
+        }
+        if (level == 4)
+        {
+            num = (int) (Math.random() * (10000) + 1);
+            System.out.println("1-10000");
+        }
+        if (level > 4)
+        {
+            System.out.println("Re-input the number.");
+            theLevel();
         }
         startGame1();
     }
